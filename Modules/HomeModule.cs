@@ -1,8 +1,8 @@
 using Nancy;
-using Car.Objects;
+using Automobile.Objects;
 using System.Collections.Generic;
 
-namespace ToDoList
+namespace Automobile
 {
   public class HomeModule : NancyModule
   {
@@ -10,7 +10,7 @@ namespace ToDoList
     {
       Get["/"] = _ => View["add_new_car.cshtml"];
       Get["/view_all_cars"] = _ => {
-        List<string> allCars = Car.GetAll();
+        List<Car> allCars = Car.GetAll();
         return View["view_all_cars.cshtml", allCars];
       };
       Post["/car_added"] = _ => {

@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 
-namespace Car.Objects
+namespace Automobile.Objects
 {
   public class Car
   {
     private string _Model;
     private int _Price;
     private int _Mile;
+    private static List<Car> _instances = new List<Car> {};
 
     public Car (string newModel, int newPrice, int newMile)
     {
@@ -42,21 +43,16 @@ namespace Car.Objects
 
     public void SetMile(int newMile)
     {
-      _Mile = newMile
+      _Mile = newMile;
     }
 
-
-
-
-    private static List<string> _instances = new Car<string> {};
-
-    public static List<string> GetAll()
+    public static List<Car> GetAll()
     {
       return _instances;
     }
     public void Save()
     {
-      _instances.Add(_description);
+      _instances.Add(this);
     }
     public static void ClearAll()
     {

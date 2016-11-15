@@ -1,8 +1,10 @@
 <h1>To Do List</h1>
 <ul>
-  @foreach(string car in Model)
+  @foreach(var car in Model)
   {
-    <li>@car</li>
+    <li>@car.GetModel()</li>
+    <li>@car.GetPrice()</li>
+    <li>@car.GetMile()</li>
   }
 </ul>
 <p><a href="/">Add another car here!</a></p>
