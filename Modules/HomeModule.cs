@@ -1,5 +1,5 @@
 using Nancy;
-using ToDoList.Objects;
+using Car.Objects;
 using System.Collections.Generic;
 
 namespace ToDoList
@@ -8,19 +8,19 @@ namespace ToDoList
   {
     public HomeModule()
     {
-      Get["/"] = _ => View["add_new_task.cshtml"];
-      Get["/view_all_tasks"] = _ => {
-        List<string> allTasks = Task.GetAll();
-        return View["view_all_tasks.cshtml", allTasks];
+      Get["/"] = _ => View["add_new_car.cshtml"];
+      Get["/view_all_cars"] = _ => {
+        List<string> allCars = Car.GetAll();
+        return View["view_all_cars.cshtml", allCars];
       };
-      Post["/task_added"] = _ => {
-        Task newTask = new Task (Request.Form["new-task"]);
-        newTask.Save();
-        return View["task_added.cshtml", newTask];
+      Post["/car_added"] = _ => {
+        Car newCar = new Car (Request.Form["new-model"], Request.Form["new-price"], Request.Form["new-mile"]);
+        newCar.Save();
+        return View["car_added.cshtml", newCar];
       };
-      Post["/tasks_cleared"] = _ => {
-        Task.ClearAll();
-        return View["tasks_cleared.cshtml"];
+      Post["/cars_cleared"] = _ => {
+        Car.ClearAll();
+        return View["cars_cleared.cshtml"];
       };
     }
   }
